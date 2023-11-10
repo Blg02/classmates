@@ -52,8 +52,6 @@
 	 a.button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
             text-align: center;
             text-decoration: none;
             font-size: 16px;
@@ -61,6 +59,31 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
+        }
+
+	
+        a.button.view {
+            background-color: #4CAF50;  /* Green */
+            color: white;
+        }
+
+        a.button.edit {
+            background-color: #FFD700;  /* Yellow */
+            color: black;
+        }
+
+        a.button.delete {
+            background-color: #FF0000;  /* Red */
+            color: white;
+        }
+
+        a.button.new {
+            background-color: #0000FF;  /* Blue */
+            color: white;
+        }
+
+        a.button:hover {
+            opacity: 0.8;
         }
 
         a.button:hover {
@@ -94,16 +117,16 @@
     <td>{{ classmate.age }}</td>
     <td>{{ classmate.gender }}</td>
     <td>{{ classmate.address }}</td>
-    <td><a class="button" href="{% url "classmate_view" classmate.id %}">view</a></td>
-    <td><a class="button" href="{% url "classmate_edit" classmate.id %}">edit</a></td>
-    <td><a class="button" href="{% url "classmate_delete" classmate.id %}">delete</a></td>
+    <td><a class="button view" href="{% url "classmate_view" classmate.id %}">view</a></td>
+    <td><a class="button edit" href="{% url "classmate_edit" classmate.id %}">edit</a></td>
+    <td><a class="button delete" href="{% url "classmate_delete" classmate.id %}">delete</a></td>
     </tr>
     {% endfor %}
 </tbody>
 </table>
 
 <div style="text-align: center;">
-    <a class="button" href="{% url "classmate_new" %}">New</a>
+    <a class="button new" href="{% url "classmate_new" %}">New</a>
 </div>
 
 </body>

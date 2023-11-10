@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classmates</title>
+    <style>
+        body {
+            background-image: url('https://i.makeagif.com/media/10-22-2020/Pms24f.gif'); /* Set the path to your background image */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff; /* Set your preferred text color */
+            text-shadow: 2px 2px 4px #333; /* Add a subtle text shadow */
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0px 0px 20px 5px #888; /* Add a 3D box shadow effect */
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #D89D7B; /* Set your preferred header background color */
+            color: white; /* Set your preferred header text color */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Set your preferred even row background color */
+        }
+	
+	 tr:hover {
+            background-color: #a2d8f9; /* Set your preferred hover background color */
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF; /* Set your preferred link color */
+        }
+	
+	 a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        a.button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Classmates</h1>
+
+<table border="1">
+<thead>
+    <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Address</th>
+    <th>View</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for classmate in object_list %}
+    <tr>
+    <td>{{ classmate.firstname }}</td>
+    <td>{{ classmate.lastname }}</td>
+    <td>{{ classmate.age }}</td>
+    <td>{{ classmate.gender }}</td>
+    <td>{{ classmate.address }}</td>
+    <td><a class="button" href="{% url "classmate_view" classmate.id %}">view</a></td>
+    <td><a class="button" href="{% url "classmate_edit" classmate.id %}">edit</a></td>
+    <td><a class="button" href="{% url "classmate_delete" classmate.id %}">delete</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+<div style="text-align: center;">
+    <a class="button" href="{% url "classmate_new" %}">New</a>
+</div>
+
+</body>
+</html>
